@@ -1,0 +1,63 @@
+@import url("../../app/app.css");
+
+.navbar {
+    width: 100%;
+    min-width: 100%;
+    background-color: #fff;
+    box-shadow: 10px 5px 15px #f1f1f1;
+}
+.navbar-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo {
+    width: 10em;
+    height: 10em;
+}
+.title {
+    font-size: 3em;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+.btn {
+    background-color: #019a03;
+    border: 1px solid #019a03;
+    color: #fff;
+    font-weight: 400;
+    padding: .7em;
+    font-family: "Poppins";
+    font-size: 17px;
+    border-radius: 6px;
+    transition: all .1s ease-in-out;
+}
+.btn:hover {
+    background-color: #fff;
+    border: 1px solid #019a03;
+    color: #019a03;
+}
+.menu-items-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item {
+    font-family: "Poppins";
+    font-size: 17px;
+    padding-right: 3.5em;
+    color: gray;
+}
+.item:hover {
+    color: #019a03;
+}
+.active {
+    color: #019a03;
+    font-weight: 600;
+}
+h1 {
+    font-size: 4.5rem;
+}
+.current-page {
+    font-family: var(--universal-fontfamily);
+    color: var(--universal-color) ;
+}
