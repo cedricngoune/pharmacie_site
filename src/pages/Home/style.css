@@ -1,0 +1,17 @@
+@import url("../../app/app.css");
+.image {
+    width: 50%;
+    object-fit: contain;
+}
+.container-schedule {
+    margin-left: 5rem;
+    
+}
+.inline-content {
+    font-family: var(--universal-fontfamily);
+    font-weight: 300;
+    margin-top: 1.3rem;
+}
+.url_link {
+    color: rgb(153, 199, 221);
+}

@@ -1,0 +1,19 @@
+@import url("../../app/app.css");
+.site-input-split {
+    height: 38px;
+    width: 80%;
+}
+.label-text {
+    font-family:var(--universal-fontfamily);
+}
+.get-in-touch-area {
+    font-family: var(--universal-fontfamily);
+    padding-left: 7rem;
+}
+.text {
+    font-size: 1.3rem;
+
+}
+address {
+    font-style: italic;
+}

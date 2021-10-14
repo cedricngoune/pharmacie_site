@@ -4,10 +4,12 @@ import './app.css';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom";
 
 import "antd/dist/antd.css";
+import { Footer } from '../Components/footer';
 
 function App() {
   return (
@@ -20,9 +22,12 @@ function App() {
             key={i} 
             path={route.path}
             component={route.component}
-            />
+          > 
+          </Route>
         ))}
       </Switch>
+      <Redirect to="/home" />
+      <Footer />
     </Router>
  
   );
