@@ -17,3 +17,20 @@
 address {
     font-style: italic;
 }
+.form-contact {
+    font-family: var(--universal-fontfamily);
+}
+.group-element {
+    margin: 1.4em 0;
+}
+.btn-submit {
+    background-color: #019a03;
+}
+.btn-submit:hover {
+    background-color: #3dbb3f;
+}
+.icon-alert {
+    color: red;
+    height: 30px;
+    width: 20px;
+}

@@ -6,7 +6,7 @@ import { NumeroUtiles } from '../pages/Numeros-utiles';
 
 export const routes = [
     {
-        path: "/home",
+        path: "/",
         component: Home
     },
     {

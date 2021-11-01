@@ -1,79 +1,111 @@
 import React from "react";
-import {Form, Input, Button} from 'antd';
+import emailjs from 'emailjs-com'
+import {useForm} from 'react-hook-form'
+import{BiErrorCircle} from 'react-icons/bi'
+
 
 export const FormComponent = () => {
+ 
+    const {register, formState: {errors,isSubmitSuccessful},  reset,  watch, handleSubmit} = useForm()
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-      };
-    
-      const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-      };
-
+    const sendMail = (formData) => { 
+   
+        emailjs.send(
+            "service_jx049vi", 
+            "template_vkwyp1i", 
+            formData, 
+            "user_J8uSeYw48WqqnnhVHPIj6"
+        )
+        .then((result) =>{
+            
+            console.log(result.status)
+        }, (error) => {
+            console.log(error.text)
+        })
+        console.log(formData)
+        reset()
+         
+    }
+   
+   
     return (
-            <div className="form-contact sm:py-6">
-                <Form
-                    name="basic"
-                    labelCol={{ span: 5 }}
-                    wrapperCol={{ span: 18 }}
-                    initialValues={{ remember: true }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                >
-                    <Form.Item
-                        label="Nom et prénom" 
-                        name="fullname"
-                        className="label-text text-5xl"
-                        rules={[{required:true, message:"Votre nom svp!"}]}
-                    >
-                        <Input 
-                            className="site-input-split" 
-                            type="label-text text" >
+            <div className="form-contact px-5 ml-7 ">
+                {isSubmitSuccessful
+                    ? <p className="text-normal text-green-400">Message envoyé! </p> 
+                    : <p></p>
+                } 
+                <form className="w-full max-w-lg" onSubmit={handleSubmit(sendMail)}>
+                    <div className="mx-3 mb-6">
+                        <div className="group-element">
+                            <label htmlFor="fullname" className="text-black-600 font-medium">Nom et prénom:</label>
+                            <input 
+                              {...register("fullname", {
+                                required: true,
+                                maxLength: 30,
+                                })}
+                                className="border-solid border-gray-300 border py-2 px-4 w-full rounded" 
+                                name="fullname"
+                                placeholder="nom & prénom"
+                                type="text" 
+                            />
+                            {errors?.fullname?.type === "required" && (<p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Veuillez entrer votre nom svp!</p>)}
+                            {errors?.fullname?.type === "maxLength" && (<p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Nom et prénom trop longs!</p>)}
+                        </div>
 
-                        </Input>
-                    </Form.Item>
-                    <Form.Item
-                        label="telephone" 
-                        name="phone"
-                        className="label-text text-5xl"
-                        rules={[{required: true, message:"Votre n° de téléphone svp!"}]}
-                    >
-                        <Input 
-                            className="site-input-split" 
-                            type="tel">                
-                        </Input>
-                    </Form.Item>
-                    <Form.Item
-                        label="Email" 
-                        name="email"
-                        className="label-text text-5xl"
-                        rules={[{required: true, message:"Votre email svp! "}]}
-                        >
-                        <Input 
-                            className="site-input-split" 
-                            type="email">
+                        <div className="group-element">
+                            <label htmlFor="phone" className="text-black-600 font-medium">N°téléphone:</label>
+                            <input 
+                                {...register("phone", {
+                                    required: true,
+                                    pattern: /^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/i
+                                })}
+                                className="border-solid border-gray-300 border py-2 px-4 w-full rounded"
+                                name="phone"
+                                placeholder="Téléphone"
+                                type="tel"
+                            />
+                            {errors?.phone?.type === "required" && <p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Veuillez entrer votre n° de téléphone</p>}
+                            {errors?.phone?.type === "pattern" && <p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>n° de téléphone invalide</p>}
+                        </div>
 
-                        </Input>
-                    </Form.Item>
-                    <Form.Item
-                        label="Votre message" 
-                        className="label-text text-lg"
-                        name="message">
-                            <Input.TextArea className="site-input-split" size="large" />
-                    </Form.Item>
-                    <Form.Item
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16
-                        }}
-                    >
-                    <Button type="primary" htmlType="submit">
-                        Envoyer votre message
-                    </Button>
-                    </Form.Item>
-                </Form>
+                        <div className="group-element">
+                            <label htmlFor="email" className="text-black-600 font-medium">Email:</label>
+                            <input 
+                                {...register("email", {
+                                    required: true,
+                                    pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i
+                                })}
+                                className="border-solid border-gray-300 border py-2 px-4 w-full rounded" 
+                                name="email"
+                                placeholder="Mail"
+                                type="text" 
+                            />
+                            {errors?.email?.type === "required" && <p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Veuillez entrer votre adresse mail</p>}
+                            {errors?.email?.type === "pattern" && <p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Adresse mail invalide</p>}
+                        </div>
+          
+                        <div className="group-element">
+                        <label htmlFor="message" className="text-black-600 font-medium">Votre message:</label>
+                            <textarea
+                                {...register("message", {
+                                    required: true
+                                })}
+                                className="border-solid border-gray-300 border  px-4 w-full rounded text-gray-700"
+                                name="message"
+                                placeholder="Votre message"
+                                rows={5}
+                                cols={5}
+                            />
+                            {errors?.message?.type === "required" && <p className="mb-3 text-normal text-red-500"><BiErrorCircle className="inline mr-1"/>Message requis! </p>}
+                         </div>
+                        <button 
+                          
+                            type="submit" 
+                            className="mt-4 w-full btn-submit text-green-100 border py-3 px-6 font-semibold text-md rounded">
+                                Envoyer votre message
+                        </button>
+                    </div>
+                </form>
             </div>    
     )
 }
