@@ -30,11 +30,15 @@
     font-size: 17px;
     border-radius: 6px;
     transition: all .1s ease-in-out;
+    outline: none;
 }
 .btn:hover {
     background-color: #fff;
     border: 1px solid #019a03;
     color: #019a03;
+}
+.btn:focus {
+    outline: none;
 }
 
 .menu-items-list {

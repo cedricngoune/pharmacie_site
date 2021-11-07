@@ -4,8 +4,7 @@ import './app.css';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 
 import "antd/dist/antd.css";
@@ -26,7 +25,6 @@ function App() {
           </Route>
         ))}
       </Switch>
-      {/* <Redirect to="/home" /> */}
       <Footer />
     </Router>
  
