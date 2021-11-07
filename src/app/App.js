@@ -1,5 +1,5 @@
 import { routes } from '../Components/routes';
-import Header from '../pages/Header/header';
+import Header from '../Components/Header/header';
 import './app.css';
 import {
   BrowserRouter as Router,

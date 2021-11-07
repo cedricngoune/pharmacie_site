@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form'
 import{BiErrorCircle} from 'react-icons/bi'
 
 
+
 export const FormComponent = () => {
  
     const {register, formState: {errors,isSubmitSuccessful},  reset,  watch, handleSubmit} = useForm()
@@ -106,6 +107,7 @@ export const FormComponent = () => {
                         </button>
                     </div>
                 </form>
+              
             </div>    
     )
 }

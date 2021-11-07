@@ -1,0 +1,15 @@
+@import url("../../app/app.css");
+
+table th, td {
+    font-family: var(--universal-fontfamily);   
+}
+table a {
+    color: cadetblue;
+    font-size: 15px;
+}
+table .text-xs {
+    font-size: 15px;
+}
+.container-fluid .div-area {
+    margin-top: 50px;
+}
