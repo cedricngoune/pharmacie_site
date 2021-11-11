@@ -1,6 +1,6 @@
 import { routes } from '../Components/routes';
 import Header from '../Components/Header/header';
-import './app.css';
+import './App.css';
 import {
   BrowserRouter as Router,
   Route,
