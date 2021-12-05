@@ -1,0 +1,29 @@
+@import url("../../app/App.css");
+
+.container-schedule {
+    margin-left: 5rem;
+    justify-self: center;
+}
+
+.inline-content {
+    font-family: var(--universal-fontfamily);
+    margin-top: 2.3vw;
+}
+.text-hours {
+    font-size: clamp(.6rem, 1.3vw, 2.5rem);
+    font-weight: 100;
+}
+.url_link {
+    color: rgb(153, 199, 221);
+}
+
+/**
+    responsive
+*/  
+@media screen and (max-width: 940px) {
+  .container-schedule h1 {
+      transition: .1s ease;
+      font-size: 1.7rem !important;
+  }
+  
+}

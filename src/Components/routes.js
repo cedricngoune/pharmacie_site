@@ -1,8 +1,8 @@
-import { Home } from '../pages/Home';
-import { Gardes} from '../pages/Gardes'
-import Contact from '../pages/Contact';
-import { NumeroUtiles } from '../pages/Numeros-utiles';
-import { News } from '../pages/Actualites';
+import { Home } from '../pages/Home/home';
+import { Gardes} from '../pages/Gardes/gardes'
+import Contact from '../pages/Contact/contact';
+import { NumeroUtiles } from '../pages/Numeros-utiles/numero-utiles';
+import { News } from '../pages/Actualites/actualites';
 
 
 export const routes = [

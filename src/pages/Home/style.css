@@ -1,4 +1,4 @@
-@import url("../../app/App.css");
+@import url("../../app/app.css");
 .image {
     width: 50%;
     object-fit: contain;

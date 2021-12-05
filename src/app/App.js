@@ -8,23 +8,25 @@ import {
 } from "react-router-dom";
 
 import "antd/dist/antd.css";
-import { Footer } from '../Components/footer';
+import { Footer } from '../Components/footer/footer';
 
 function App() {
   return (
     <Router>
-      <Header />
-      <Switch>
-        {routes.map((route, i) => (
-          <Route 
-            exact 
-            key={i} 
-            path={route.path}
-            component={route.component}
-          > 
-          </Route>
-        ))}
-      </Switch>
+      <div className="page-container">
+        <Header />
+        <Switch>
+          {routes.map((route, i) => (
+            <Route 
+              exact 
+              key={i} 
+              path={route.path}
+              component={route.component}
+            > 
+            </Route>
+          ))}
+        </Switch>
+      </div>
       <Footer />
     </Router>
  

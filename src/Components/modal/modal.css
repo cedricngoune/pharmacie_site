@@ -1,0 +1,31 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__container {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+.btn__close {
+    background-color: rgb(252, 81, 81);
+    border-color: rgb(252, 81, 81);
+    margin: 15px 10px;
+}
+.btn__close:hover {
+    border-color: rgb(252, 81, 81);
+    color: rgb(252, 81, 81);  
+}
+.modal__body {
+   margin: auto;
+}

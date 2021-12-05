@@ -2,7 +2,7 @@ import React from "react";
 import emailjs from 'emailjs-com'
 import {useForm} from 'react-hook-form'
 import{BiErrorCircle} from 'react-icons/bi'
-import { GoogleMapsContainer } from "../../Components/Google_map";
+
 
 
 export const FormComponent = () => {
@@ -107,7 +107,7 @@ export const FormComponent = () => {
                         </button>
                     </div>
                 </form>
-                <GoogleMapsContainer  />
+              
             </div>    
     )
 }
