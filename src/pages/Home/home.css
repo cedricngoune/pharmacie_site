@@ -1,29 +1,37 @@
 @import url("../../app/App.css");
 
 .container-schedule {
-    margin-left: 5rem;
-    justify-self: center;
+  margin-left: 5rem;
 }
 
 .inline-content {
-    font-family: var(--universal-fontfamily);
-    margin-top: 2.3vw;
+  font-family: var(--universal-fontfamily);
+  margin-top: 2.3vw;
 }
 .text-hours {
-    font-size: clamp(.6rem, 1.3vw, 2.5rem);
-    font-weight: 100;
+  font-size: clamp(0.6rem, 1.3vw, 2.5rem);
+  font-weight: 100;
 }
 .url_link {
-    color: rgb(153, 199, 221);
+  color: rgb(153, 199, 221);
 }
 
 /**
     responsive
-*/  
+*/
 @media screen and (max-width: 940px) {
   .container-schedule h1 {
-      transition: .1s ease;
-      font-size: 1.7rem !important;
+    transition: 0.1s ease;
+    font-size: 1.7rem !important;
   }
-  
+}
+@media screen and (max-width: 770px) {
+  .container > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .container > div > div {
+    margin-top: 2rem;
+    align-items: flex-start;
+  }
 }

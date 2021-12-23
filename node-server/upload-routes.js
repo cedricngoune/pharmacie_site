@@ -17,25 +17,26 @@ router.post("/send", (req, res, next) => {
         body: { email: from, fullname: subject },
         file: { path },
       } = req
-      const mail = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.user_email,
-          pass: "zxreeyqvdhhgaymf",
-        },
-      })
-      const mailOptions = {
-        from,
-        to: process.env.recipient,
-        subject: `depot d'ordonnance (${subject})`,
-        attachments: [{ path: path }],
-      }
+
       try {
+        const mail = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: process.env.user_email,
+            pass: "zxreeyqvdhhgaymf",
+          },
+        })
+        const mailOptions = {
+          from,
+          to: process.env.recipient,
+          subject: `depot d'ordonnance (${subject})`,
+          attachments: [{ path: path }],
+        }
         mail.sendMail(mailOptions, async (err, info) => {
           if (err) {
-            return response.send({
-              err: "Something wrong happened",
-              code: err.message,
+            return res.send({
+              err: "Une erreur s'est produite",
+              code: 400,
             })
           } else {
             console.log(
@@ -47,13 +48,13 @@ router.post("/send", (req, res, next) => {
             })
           }
         })
-        return res.status(200).send({
+        return res.status(200).json({
           message: "Email envoyé!",
           statusText: "success",
         })
       } catch (error) {
         console.log(error)
-        res.send({
+        res.json({
           errorMsg: error.message,
           statusText: "failed",
         })

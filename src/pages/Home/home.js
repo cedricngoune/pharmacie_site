@@ -1,28 +1,22 @@
-import React from "react";
-import "./home.css";
-import pharmacieImg from "../../Components/assets/pharmacie.jpg";
-import { openHours } from "./open-hours";
-export const Home = () => {
-  const strongStyle = {
-    fontSize: "3vw",
-    fontFamily: "Helvetica",
-  };
-  const textStyle = {
-    fontSize: "2vw",
-    fontFamily: "Helvetica",
-  };
+import React from "react"
+import "./home.css"
+import pharmacieImg from "../../Components/assets/pharmacie.jpg"
+import { openHours } from "./open-hours"
 
+export const Home = () => {
   return (
-    <div className="container-fluid">
-      <div className="w-full grid grid-cols-2 gap-2 mt-5">
-        <img
-          src={pharmacieImg}
-          alt="pharmacie"
-          className="object-contain inset-0 w-full h-full object-cover sm:rounded-md ml-2"
-        />
-        <div className="self-center container-schedule mx-15">
+    <div className="w-full container mx-auto">
+      <div className="w-full grid grid-cols-2 items-start mt-8">
+        <div>
+          <img
+            src={pharmacieImg}
+            alt="pharmacie"
+            className="object-cover w-full sm:rounded-md ml-2"
+          />
+        </div>
+        <div className="justify-self-center container-schedule  mx-15">
           <h1 className="xs:text-xs sm:text-sm sm:leading-7 sm:text-black md:text-2xl">
-            Horaires d'ouvertures
+            Nos horaires d'ouvertures
           </h1>
           {openHours.map((schedule, index) => (
             <div key={index}>
@@ -42,7 +36,11 @@ export const Home = () => {
       <div className="sm:py-5 mx-5">
         <p className="text-lg">
           Cliquez
-          <a className="url_link" href="https://monpharmacien-idf.fr/">
+          <a
+            className="url_link"
+            href="https://monpharmacien-idf.fr/"
+            target="_blank"
+          >
             ici
           </a>
           pour trouver les pharmacies ouvertes en journée et pour les pharmacies
@@ -50,5 +48,5 @@ export const Home = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}

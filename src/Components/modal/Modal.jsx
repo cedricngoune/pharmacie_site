@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./modal.css"
 import { useForm } from "react-hook-form"
 import { BiErrorCircle } from "react-icons/bi"
@@ -9,15 +9,20 @@ function Modal({ closeModal }) {
     register,
     formState: { errors, isSubmitSuccessful },
     handleSubmit,
+    reset,
   } = useForm()
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [status, setStatus] = useState({
+    error: null,
+    success: null,
+  })
+  const [isLoading, setIsLoading] = useState(false)
+
   const url = `http://localhost:5000/send`
   const httHeaders = {
     headers: { "Content-Type": `multipart/form-data` },
   }
-  useEffect(() => {}, [])
-  const sendDeposit = (data) => {
+
+  const sendDeposit = async (data) => {
     const formData = new FormData()
     formData.append("fullname", data.fullname)
     formData.append("email", data.email)
@@ -25,12 +30,13 @@ function Modal({ closeModal }) {
     axios
       .post(url, formData, httHeaders)
       .then(({ data }) => {
-        setSuccess(data.message)
+        setStatus({ success: data.message })
       })
       .catch((err) => {
         console.log(err.message)
-        setError(err.message)
+        setStatus({ error: err.message })
       })
+    reset(formData)
   }
 
   return (
@@ -43,13 +49,12 @@ function Modal({ closeModal }) {
         </div>
         <div className="modal__body">
           <div className="form-contact px-5 ml-7 ">
-            {!isSubmitSuccessful || error ? (
-              <p className="text-normal h-100 w-100 text-red-500">{error} </p>
-            ) : (
-              <p className="text-normal h-100 w-100 text-green-500">
-                {" "}
-                {success}
+            {!isSubmitSuccessful || status.error ? (
+              <p className="text-normal h-100 w-100 text-red-500">
+                {status.error}{" "}
               </p>
+            ) : (
+              <p className="text-normal text-green-400">{status.success}</p>
             )}
             <form
               className="w-full max-w-lg"
@@ -130,9 +135,9 @@ function Modal({ closeModal }) {
                   onClick={() => closeModal(false)}
                   className="btn btn__close bg-red-300"
                 >
-                  Annuler
+                  Fermer
                 </button>
-                <button className="btn btn__send">Valider</button>
+                <button className="btn btn__send">Envoyer</button>
               </div>
             </form>
           </div>
