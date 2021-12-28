@@ -3,7 +3,7 @@ import "./gardes.css"
 
 export function Gardes() {
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid min-h-screen">
       <section className="flex flex-col justify-center items-center sm:py-12">
         <h1 className="pt-6 text-center leading-6 font-bold sm:text-lg sm:leading-7">
           Pharmacies de gardes
@@ -16,7 +16,7 @@ export function Gardes() {
             target="_blank"
             href="https://monpharmacien-idf.fr/"
           >
-            monpharmacien
+            <u>monpharmacien</u>
           </a>{" "}
         </p>
       </section>
